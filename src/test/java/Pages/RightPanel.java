@@ -33,6 +33,10 @@ public class RightPanel extends ParentPanel{
     private WebElement repeatedPassword;
     @FindBy(xpath = "//*[@id='customerForm']//input[@type='submit']")
     private WebElement registerButton;
+    @FindBy(xpath = "//div[@id='rightPanel']/p")
+    public WebElement confirmMessage;
+    @FindBy(xpath = "//p[@class='error']")
+    public WebElement errorMessage;
 
     public WebElement getWebElement(String element){
         switch (element){
@@ -44,10 +48,10 @@ public class RightPanel extends ParentPanel{
             case "zipCode" : return this.zipCode;
             case "phoneNumber" : return this.phoneNumber;
             case "ssn" : return this.ssn;
-            case "registerUsername" : return this.registerUsername;
-            case "registerPassword" : return this.registerPassword;
-            case "repeatedPassword" : return this.repeatedPassword;
-            case "registerButton" : return this.registerButton;
+            case "username" : return this.registerUsername;
+            case "password" : return this.registerPassword;
+            case "confirmPassword" : return this.repeatedPassword;
+            case "register" : return this.registerButton;
         }
         return null;
     }

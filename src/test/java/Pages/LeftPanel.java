@@ -10,20 +10,23 @@ public class LeftPanel extends ParentPanel {
         PageFactory.initElements(GWD.getDriver(), this);
     }
     @FindBy(name = "username")
-    private WebElement username;
+    public WebElement username;
     @FindBy(name = "password")
-    private WebElement password;
+    public WebElement password;
     @FindBy(xpath = "//div[@class='login']/input[@type = 'submit']")
     private WebElement loginButton;
+    @FindBy(linkText = "Log Out")
+    private WebElement logoutButton;
     @FindBy(linkText = "Register")
     private WebElement registerButton;
+    @FindBy(xpath = "//div[@id='leftPanel']/p")
+    public WebElement titleWelcome;
 
     public WebElement getWebElement(String element){
         switch (element){
-            case "username" : return this.username;
-            case "password" : return this.password;
-            case "loginButton" : return this.loginButton;
-            case "registerButton" : return this.registerButton;
+            case "login" : return this.loginButton;
+            case "register" : return this.registerButton;
+            case "logout": return this.logoutButton;
         }
         return null;
     }
