@@ -22,9 +22,6 @@ public class GWD {
 
         if (threadDriver.get() == null) {
             switch (threadBrowserName.get()) {
-                case "chrome":
-                    threadDriver.set(new ChromeDriver());
-                    break;
                 case "firefox":
                     threadDriver.set(new FirefoxDriver());
                     break;
@@ -34,8 +31,10 @@ public class GWD {
                 case "safari":
                     threadDriver.set(new SafariDriver());
                     break;
+                default:
+                    threadDriver.set(new ChromeDriver());
+                    break;
             }
-            threadDriver.set(new ChromeDriver());
             threadDriver.get().manage().window().maximize();
             threadDriver.get().manage().timeouts().pageLoadTimeout(Duration.ofSeconds(20));
         }
