@@ -21,4 +21,3 @@ public class Hooks {
         GWD.quitDriver();
     }
 }
-}
