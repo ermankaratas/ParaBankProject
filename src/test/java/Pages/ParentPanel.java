@@ -17,25 +17,31 @@ public class ParentPanel {
     WebDriverWait wait = new WebDriverWait(GWD.getDriver(), Duration.ofSeconds(20));
     public void myClick(WebElement element){
         wait.until(ExpectedConditions.elementToBeClickable(element));
-        scrollToElement(element);
+        myScrollToElement(element);
         element.click();
     }
     public void mySendKeys(WebElement element, String text){
         wait.until(ExpectedConditions.visibilityOf(element));
-        scrollToElement(element);
+        myScrollToElement(element);
         element.clear();
         element.sendKeys(text);
     }
-    public void scrollToElement(WebElement element){
+    public void myScrollToElement(WebElement element){
         JavascriptExecutor js = (JavascriptExecutor) GWD.getDriver();
         js.executeScript("arguments[0].scrollIntoView();", element);
     }
-    public void verifyContainsText(WebElement element, String value){
+    public void myVerifyContainsText(WebElement element, String value){
         wait.until(ExpectedConditions.textToBePresentInElement(element,value));
         Assert.assertTrue(element.getText().toLowerCase().contains(value.toLowerCase()));
         new Actions(GWD.getDriver()).sendKeys(Keys.ESCAPE).build().perform();
     }
-    public static int randomGenerator(int number) {
+    public void myVerifyEqualsText(WebElement element, String value){
+        wait.until(ExpectedConditions.textToBePresentInElement(element,value));
+        Assert.assertTrue(element.getText().equalsIgnoreCase(value));
+        new Actions(GWD.getDriver()).sendKeys(Keys.ESCAPE).build().perform();
+    }
+
+    public static int myRandomGenerator(int number) {
         return (int) (Math.random() * number);
     }
     public void myHover(WebElement element) {
