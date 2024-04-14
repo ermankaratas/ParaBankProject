@@ -58,7 +58,17 @@ public class RightPanel extends ParentPanel{
     @FindBy(xpath = "//*[@id='rightPanel']//input[@type='submit']")
     private WebElement paymentButton;
     @FindBy(xpath = "//div[@ng-show='showResult']/h1")
-    public WebElement paymentTitle;
+    private WebElement paymentTitle;
+    @FindBy(id = "type")
+    public WebElement accountTypeSelect;
+    @FindBy(id = "fromAccountId")
+    public WebElement accountSelect;
+    @FindBy(xpath = "//div[@ng-if='showForm']//p[2]/b")
+    public WebElement minBalanceMsg;
+    @FindBy(xpath = "//input[@type='submit']")
+    private WebElement openAccountBtn;
+    @FindBy(id = "newAccountId")
+    public WebElement newAccountId;
 
     public WebElement getWebElement(String element){
         switch (element){
@@ -84,6 +94,8 @@ public class RightPanel extends ParentPanel{
             case "verifyAccountNumber" : return this.verifyAccount;
             case "paymentAmount" : return this.paymentAmount;
             case "Send Payment" : return this.paymentButton;
+            case "Bill Payment Complete" : return this.paymentTitle;
+            case "Open New Account" : return this.openAccountBtn;
         }
         return null;
     }
