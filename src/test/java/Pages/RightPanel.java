@@ -37,6 +37,28 @@ public class RightPanel extends ParentPanel{
     public WebElement confirmMessage;
     @FindBy(xpath = "//p[@class='error']")
     public WebElement errorMessage;
+    @FindBy(name = "payee.name")
+    private WebElement payeeName;
+    @FindBy(name = "payee.address.street")
+    private WebElement payeeAddress;
+    @FindBy(name = "payee.address.city")
+    private WebElement payeeCity;
+    @FindBy(name = "payee.address.state")
+    private WebElement payeeState;
+    @FindBy(name = "payee.address.zipCode")
+    private WebElement payeeZipCode;
+    @FindBy(name = "payee.phoneNumber")
+    private WebElement payeePhoneNumber;
+    @FindBy(name = "payee.accountNumber")
+    private WebElement payeeAccountNumber;
+    @FindBy(name = "verifyAccount")
+    private WebElement verifyAccount;
+    @FindBy(name = "amount")
+    private WebElement paymentAmount;
+    @FindBy(xpath = "//*[@id='rightPanel']//input[@type='submit']")
+    private WebElement paymentButton;
+    @FindBy(xpath = "//div[@ng-show='showResult']/h1")
+    public WebElement paymentTitle;
 
     public WebElement getWebElement(String element){
         switch (element){
@@ -52,6 +74,16 @@ public class RightPanel extends ParentPanel{
             case "password" : return this.registerPassword;
             case "confirmPassword" : return this.repeatedPassword;
             case "register" : return this.registerButton;
+            case "payeeName" : return this.payeeName;
+            case "payeeAddress" : return this.payeeAddress;
+            case "payeeCity" : return this.payeeCity;
+            case "payeeState" : return this.payeeState;
+            case "payeeZipCode" : return this.payeeZipCode;
+            case "payeePhoneNumber" : return this.payeePhoneNumber;
+            case "payeeAccountNumber" : return this.payeeAccountNumber;
+            case "verifyAccountNumber" : return this.verifyAccount;
+            case "paymentAmount" : return this.paymentAmount;
+            case "Send Payment" : return this.paymentButton;
         }
         return null;
     }
