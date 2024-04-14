@@ -5,7 +5,7 @@ Feature: Open a new user account (register)
 
   Scenario:
     When user clicks the "register" button
-    Then user fills the registration information
+    Then user fills the "Registration" Form
       | firstName       | Joseph      |
       | lastName        | Eis         |
       | address         | X road 3    |
