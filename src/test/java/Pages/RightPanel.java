@@ -69,6 +69,8 @@ public class RightPanel extends ParentPanel{
     private WebElement openAccountBtn;
     @FindBy(id = "newAccountId")
     public WebElement newAccountId;
+    @FindBy(xpath = "//div[@ng-if='showResult']/p")
+    public WebElement newAccountConfirmMsg;
 
     public WebElement getWebElement(String element){
         switch (element){
@@ -99,6 +101,4 @@ public class RightPanel extends ParentPanel{
         }
         return null;
     }
-
-
 }
