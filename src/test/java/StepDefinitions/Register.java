@@ -24,13 +24,13 @@ public class Register {
         leftPanel.myClick(leftPanel.getWebElement(buttonName));
     }
 
-    @Then("user fills the registration information")
-    public void userFillsTheRegistrationInformation(DataTable registerInfos) {
-        List<List<String>> registerInfo = registerInfos.asLists(String.class);
+    @Then("user fills the {string} Form")
+    public void userFillsTheForm(String formName, DataTable formDatas) {
+        List<List<String>> formData = formDatas.asLists(String.class);
 
-        for (int i = 0; i < registerInfo.size(); i++) {
-            WebElement webElement = rightPanel.getWebElement(registerInfo.get(i).get(0));
-            rightPanel.mySendKeys(webElement, registerInfo.get(i).get(1));
+        for (int i = 0; i < formData.size(); i++) {
+            WebElement webElement = rightPanel.getWebElement(formData.get(i).get(0));
+            rightPanel.mySendKeys(webElement, formData.get(i).get(1));
         }
     }
 
