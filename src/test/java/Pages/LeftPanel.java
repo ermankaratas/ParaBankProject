@@ -13,20 +13,23 @@ public class LeftPanel extends ParentPanel {
     public WebElement username;
     @FindBy(name = "password")
     public WebElement password;
-    @FindBy(xpath = "//div[@class='login']/input[@type = 'submit']")
+    @FindBy(css = "div.login > input[type='submit']")
     private WebElement loginButton;
     @FindBy(linkText = "Log Out")
     private WebElement logoutButton;
     @FindBy(linkText = "Register")
     private WebElement registerButton;
-    @FindBy(xpath = "//div[@id='leftPanel']/p")
+    @FindBy(css = "#leftPanel > p")
     public WebElement titleWelcome;
+    @FindBy(linkText = "Bill Pay")
+    private WebElement billPayButton;
 
     public WebElement getWebElement(String element){
         switch (element){
             case "login" : return this.loginButton;
             case "register" : return this.registerButton;
-            case "logout": return this.logoutButton;
+            case "logout" : return this.logoutButton;
+            case "Bill Pay" : return this.billPayButton;
         }
         return null;
     }
