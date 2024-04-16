@@ -41,13 +41,15 @@ public class ParentPanel {
     }
 
     public void myVerifyContainsText(WebElement element, String value) {
-        wait.until(ExpectedConditions.visibilityOf(element));
+        wait.until(ExpectedConditions.textToBePresentInElement(element,value));
+        //wait.until(ExpectedConditions.visibilityOf(element));
         Assert.assertTrue(element.getText().contains(value));
         new Actions(GWD.getDriver()).sendKeys(Keys.ESCAPE).build().perform();
     }
 
     public void myVerifyEqualsText(WebElement element, String value) {
-        wait.until(ExpectedConditions.visibilityOf(element));
+        wait.until(ExpectedConditions.textToBePresentInElement(element,value));
+        //wait.until(ExpectedConditions.visibilityOf(element));
         Assert.assertTrue(element.getText().equalsIgnoreCase(value));
         new Actions(GWD.getDriver()).sendKeys(Keys.ESCAPE).build().perform();
     }
