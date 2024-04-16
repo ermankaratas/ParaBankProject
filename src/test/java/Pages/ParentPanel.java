@@ -12,7 +12,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import java.time.Duration;
-import java.util.Locale;
 
 public class ParentPanel {
     WebDriverWait wait = new WebDriverWait(GWD.getDriver(), Duration.ofSeconds(20));
@@ -35,14 +34,20 @@ public class ParentPanel {
         js.executeScript("arguments[0].scrollIntoView();", element);
     }
 
+    public String myJsGetText(WebElement element) {
+        wait.until(ExpectedConditions.visibilityOf(element));
+        JavascriptExecutor js = (JavascriptExecutor) GWD.getDriver();
+        return (String) (js.executeScript("arguments[0].textContent;", element));
+    }
+
     public void myVerifyContainsText(WebElement element, String value) {
-        wait.until(ExpectedConditions.textToBePresentInElement(element, value));
+        wait.until(ExpectedConditions.visibilityOf(element));
         Assert.assertTrue(element.getText().contains(value));
         new Actions(GWD.getDriver()).sendKeys(Keys.ESCAPE).build().perform();
     }
 
     public void myVerifyEqualsText(WebElement element, String value) {
-        wait.until(ExpectedConditions.textToBePresentInElement(element, value));
+        wait.until(ExpectedConditions.visibilityOf(element));
         Assert.assertTrue(element.getText().equalsIgnoreCase(value));
         new Actions(GWD.getDriver()).sendKeys(Keys.ESCAPE).build().perform();
     }
@@ -58,12 +63,20 @@ public class ParentPanel {
     }
 
     public void mySelectMenu(WebElement element, int index) {
+        wait.until(ExpectedConditions.elementToBeClickable(element));
         Select select = new Select(element);
         select.selectByIndex(index);
     }
 
-    public void mySelectMenu(WebElement element, String value) {
+    public void mySelectMenu(WebElement element, String text) {
+        wait.until(ExpectedConditions.elementToBeClickable(element));
         Select select = new Select(element);
-        select.selectByValue(value);
+        select.selectByVisibleText(text);
+    }
+
+    public void myVerifyContainsCurrentUrl(String url) {
+        String currentUrl = GWD.getDriver().getCurrentUrl();
+        wait.until(ExpectedConditions.urlContains(url));
+        Assert.assertTrue(currentUrl.contains(url));
     }
 }
