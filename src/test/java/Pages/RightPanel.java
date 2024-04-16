@@ -60,17 +60,26 @@ public class RightPanel extends ParentPanel{
     @FindBy(xpath = "//div[@ng-show='showResult']/h1")
     private WebElement paymentTitle;
     @FindBy(id = "type")
-    public WebElement accountTypeSelect;
+    private WebElement accountTypeSelect;
     @FindBy(id = "fromAccountId")
-    public WebElement accountSelect;
+    private WebElement accountSelect;
     @FindBy(xpath = "//div[@ng-if='showForm']//p[2]/b")
     public WebElement minBalanceMsg;
     @FindBy(xpath = "//input[@type='submit']")
-    private WebElement openAccountBtn;
+    private WebElement submitBtn;
     @FindBy(id = "newAccountId")
     public WebElement newAccountId;
     @FindBy(xpath = "//div[@ng-if='showResult']/p")
     public WebElement newAccountConfirmMsg;
+    @FindBy(id = "fromAccountId")
+    private WebElement fromAccount;
+    @FindBy(id = "toAccountId")
+    private WebElement toAccount;
+    @FindBy(id = "amount")
+    private WebElement amount;
+    @FindBy(xpath = "//h1[@class='title']")
+    private WebElement title;
+
 
     public WebElement getWebElement(String element){
         switch (element){
@@ -97,7 +106,14 @@ public class RightPanel extends ParentPanel{
             case "paymentAmount" : return this.paymentAmount;
             case "Send Payment" : return this.paymentButton;
             case "Bill Payment Complete" : return this.paymentTitle;
-            case "Open New Account" : return this.openAccountBtn;
+            case "account type menu" : return this.accountTypeSelect;
+            case "Open New Account" :
+            case "transfer" : return this.submitBtn;
+            case "account menu" : return this.accountSelect;
+            case "from account menu" : return this.fromAccount;
+            case "to account menu" : return this.toAccount;
+            case "amount" : return this.amount;
+            case "Transfer Complete!" : return this.title;
         }
         return null;
     }
