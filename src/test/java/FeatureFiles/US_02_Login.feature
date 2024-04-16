@@ -15,7 +15,7 @@ Feature: Login
     Then user should see the "<message>" error message
     Examples:
       | username    | password     | message                       |
-      | Invaliduser | WrongPass123 | internal error has occurred   |
+      | Invaliduser | WrongPass123 | could not be verified         |
       |             | WrongPass123 | enter a username and password |
       | Invaliduser |              | enter a username and password |
       |             |              | enter a username and password |
