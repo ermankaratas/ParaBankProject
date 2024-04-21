@@ -79,7 +79,8 @@ public class RightPanel extends ParentPanel{
     private WebElement amount;
     @FindBy(xpath = "//h1[@class='title']")
     private WebElement title;
-
+    @FindBy(xpath = "//*[@name='contact']//input[@type='submit']")
+    private WebElement updateProfileButton;
 
     public WebElement getWebElement(String element){
         switch (element){
@@ -114,6 +115,7 @@ public class RightPanel extends ParentPanel{
             case "to account menu" : return this.toAccount;
             case "amount" : return this.amount;
             case "Transfer Complete!" : return this.title;
+            case "Update Profile" : return this.updateProfileButton;
         }
         return null;
     }
