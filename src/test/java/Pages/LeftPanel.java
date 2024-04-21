@@ -29,6 +29,8 @@ public class LeftPanel extends ParentPanel {
     private WebElement transferButton;
     @FindBy(linkText = "Accounts Overview")
     private WebElement accountsViewButton;
+    @FindBy(linkText = "Update Contact Info")
+    private WebElement updateContactButton;
 
     public WebElement getWebElement(String element){
         switch (element){
@@ -39,6 +41,7 @@ public class LeftPanel extends ParentPanel {
             case "Open New Account" : return this.newAccountButton;
             case "Transfer Funds" : return this.transferButton;
             case "Accounts Overview" : return this.accountsViewButton;
+            case "Update Contact Info" : return this.updateContactButton;
         }
         return null;
     }
