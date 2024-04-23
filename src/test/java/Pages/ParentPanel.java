@@ -16,6 +16,15 @@ import java.time.Duration;
 public class ParentPanel {
     WebDriverWait wait = new WebDriverWait(GWD.getDriver(), Duration.ofSeconds(20));
 
+    public void myWait(int sec) {
+
+        try {
+            Thread.sleep(sec * 1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public void myClick(WebElement element) {
         wait.until(ExpectedConditions.elementToBeClickable(element));
         myScrollToElement(element);
@@ -40,17 +49,28 @@ public class ParentPanel {
         return (String) (js.executeScript("arguments[0].textContent;", element));
     }
 
+    public String myGetValue(WebElement element) {
+        wait.until(ExpectedConditions.visibilityOf(element));
+        return element.getAttribute("value");
+    }
+
     public void myVerifyContainsText(WebElement element, String value) {
-        wait.until(ExpectedConditions.textToBePresentInElement(element,value));
+        wait.until(ExpectedConditions.textToBePresentInElement(element, value));
         //wait.until(ExpectedConditions.visibilityOf(element));
         Assert.assertTrue(element.getText().contains(value));
         new Actions(GWD.getDriver()).sendKeys(Keys.ESCAPE).build().perform();
     }
 
     public void myVerifyEqualsText(WebElement element, String value) {
-        wait.until(ExpectedConditions.textToBePresentInElement(element,value));
+        wait.until(ExpectedConditions.textToBePresentInElement(element, value));
         //wait.until(ExpectedConditions.visibilityOf(element));
         Assert.assertTrue(element.getText().equalsIgnoreCase(value));
+        new Actions(GWD.getDriver()).sendKeys(Keys.ESCAPE).build().perform();
+    }
+
+    public void myVerifyEqualsTextToAttribute(WebElement element, String value) {
+        wait.until(ExpectedConditions.visibilityOf(element));
+        Assert.assertTrue(myGetValue(element).equalsIgnoreCase(value));
         new Actions(GWD.getDriver()).sendKeys(Keys.ESCAPE).build().perform();
     }
 
