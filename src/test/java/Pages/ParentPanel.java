@@ -59,10 +59,23 @@ public class ParentPanel {
         return element.getAttribute(attribute);
     }
 
+    public void myVerifyContainsTextWithEsc(WebElement element, String value) {
+        wait.until(ExpectedConditions.textToBePresentInElement(element, value));
+        //wait.until(ExpectedConditions.visibilityOf(element));
+        Assert.assertTrue(element.getText().contains(value));
+        new Actions(GWD.getDriver()).sendKeys(Keys.ESCAPE).build().perform();
+    }
+
     public void myVerifyContainsText(WebElement element, String value) {
         wait.until(ExpectedConditions.textToBePresentInElement(element, value));
         //wait.until(ExpectedConditions.visibilityOf(element));
         Assert.assertTrue(element.getText().contains(value));
+    }
+
+    public void myVerifyEqualsTextWithEsc(WebElement element, String value) {
+        wait.until(ExpectedConditions.textToBePresentInElement(element, value));
+        //wait.until(ExpectedConditions.visibilityOf(element));
+        Assert.assertTrue(element.getText().equalsIgnoreCase(value));
         new Actions(GWD.getDriver()).sendKeys(Keys.ESCAPE).build().perform();
     }
 
@@ -70,7 +83,6 @@ public class ParentPanel {
         wait.until(ExpectedConditions.textToBePresentInElement(element, value));
         //wait.until(ExpectedConditions.visibilityOf(element));
         Assert.assertTrue(element.getText().equalsIgnoreCase(value));
-        new Actions(GWD.getDriver()).sendKeys(Keys.ESCAPE).build().perform();
     }
 
     public void myVerifyEqualsTextToAttribute(WebElement element, String value) {
