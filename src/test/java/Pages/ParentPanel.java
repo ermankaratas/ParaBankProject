@@ -54,6 +54,11 @@ public class ParentPanel {
         return element.getAttribute("value");
     }
 
+    public String myGetAttribute(WebElement element, String attribute) {
+        wait.until(ExpectedConditions.visibilityOf(element));
+        return element.getAttribute(attribute);
+    }
+
     public void myVerifyContainsText(WebElement element, String value) {
         wait.until(ExpectedConditions.textToBePresentInElement(element, value));
         //wait.until(ExpectedConditions.visibilityOf(element));
@@ -97,8 +102,8 @@ public class ParentPanel {
     }
 
     public void myVerifyContainsCurrentUrl(String url) {
-        String currentUrl = GWD.getDriver().getCurrentUrl();
         wait.until(ExpectedConditions.urlContains(url));
+        String currentUrl = GWD.getDriver().getCurrentUrl();
         Assert.assertTrue(currentUrl.contains(url));
     }
 }
