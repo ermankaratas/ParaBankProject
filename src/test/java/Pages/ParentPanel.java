@@ -12,6 +12,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import java.time.Duration;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class ParentPanel {
     WebDriverWait wait = new WebDriverWait(GWD.getDriver(), Duration.ofSeconds(20));
@@ -117,5 +119,11 @@ public class ParentPanel {
         wait.until(ExpectedConditions.urlContains(url));
         String currentUrl = GWD.getDriver().getCurrentUrl();
         Assert.assertTrue(currentUrl.contains(url));
+    }
+    public String getDateAfterDays(int days) {
+        LocalDate today = LocalDate.now();
+        LocalDate futureDate = today.plusDays(days);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM-dd-yyyy");
+        return futureDate.format(formatter);
     }
 }
