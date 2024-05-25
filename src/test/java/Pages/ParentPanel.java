@@ -11,6 +11,8 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+import java.awt.*;
+import java.awt.datatransfer.StringSelection;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -130,5 +132,9 @@ public class ParentPanel {
         myClick(element);
         element.sendKeys(Keys.CONTROL + "a");
         element.sendKeys(Keys.BACK_SPACE);
+    }
+    public void myCopyToClipboard(String filepath){
+        StringSelection copyFilepath = new StringSelection(filepath);
+        Toolkit.getDefaultToolkit().getSystemClipboard().setContents(copyFilepath,null);
     }
 }
