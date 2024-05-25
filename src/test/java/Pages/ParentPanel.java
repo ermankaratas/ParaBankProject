@@ -126,4 +126,8 @@ public class ParentPanel {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM-dd-yyyy");
         return futureDate.format(formatter);
     }
+    public void myClear(WebElement element){
+        element.sendKeys(Keys.CONTROL + "a");
+        element.sendKeys(Keys.BACK_SPACE);
+    }
 }
