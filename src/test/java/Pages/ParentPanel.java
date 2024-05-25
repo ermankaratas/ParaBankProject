@@ -127,6 +127,7 @@ public class ParentPanel {
         return futureDate.format(formatter);
     }
     public void myClear(WebElement element){
+        myClick(element);
         element.sendKeys(Keys.CONTROL + "a");
         element.sendKeys(Keys.BACK_SPACE);
     }
