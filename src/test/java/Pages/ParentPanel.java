@@ -95,7 +95,7 @@ public class ParentPanel {
         new Actions(GWD.getDriver()).sendKeys(Keys.ESCAPE).build().perform();
     }
 
-    public static int myRandomGenerator(int number) {
+    public int myRandomGenerator(int number) {
         return (int) (Math.random() * number);
     }
 
